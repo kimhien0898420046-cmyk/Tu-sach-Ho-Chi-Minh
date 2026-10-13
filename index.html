@@ -1,104 +1,515 @@
+
 <!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tủ sách điện tử Hồ Chí Minh | Trường Tiểu học Lê Hồng Phong</title>
+  <title>Tủ sách Hồ Chí Minh | Trường Tiểu học Lê Hồng Phong</title>
   <meta name="description" content="Tủ sách điện tử Hồ Chí Minh - Trường Tiểu học Lê Hồng Phong">
+
   <style>
-    :root { --red:#d92323; --gold:#ffdf25; --ink:#2d2116; --shelf:#75420e; }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family:Arial, Helvetica, sans-serif; background:#f4f4f4; color:#222; }
-    .hero {
-      min-height:250px; padding:34px 20px; display:flex; align-items:center; justify-content:center;
-      text-align:center; color:white; background:linear-gradient(120deg,#b51219,#ed2929 55%,#b51219);
-      border-bottom:8px solid #f2c34d; position:relative; overflow:hidden;
+    :root {
+      --red: #b91620;
+      --gold: #f5cc48;
+      --ink: #302116;
+      --shelf: #75420e;
     }
-    .hero:before,.hero:after { content:"✿ ✦ ✿"; position:absolute; bottom:10px; color:#ffd52b; font-size:30px; opacity:.85; }
-    .hero:before { left:18px; } .hero:after { right:18px; }
-    .school { font-size:clamp(13px,2vw,18px); font-weight:700; line-height:1.5; }
-    h1 { margin:15px 0 8px; font-size:clamp(28px,4vw,48px); line-height:1.15; }
-    .subtitle { color:var(--gold); font-size:clamp(20px,3vw,34px); font-weight:800; }
-    .intro { text-align:center; padding:22px 16px 8px; }
-    .intro p { max-width:800px; margin:8px auto; line-height:1.6; color:#555; }
-    .shelf-wrap { max-width:1500px; margin:20px auto 38px; padding:0 18px; }
-    .shelf { background:#211507; border:9px solid #a66a1d; border-radius:3px; padding:18px 12px 0; box-shadow:0 5px 12px #0002; }
-    .books { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:12px; padding-bottom:16px; }
-    .book { min-width:0; background:#fff; border:1px solid #b7a48c; padding:7px; display:flex; flex-direction:column; }
-    .cover { height:220px; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:13px 8px; text-align:center; border:1px solid #d4c6b4; color:#8d1515; background:#f4e6b8; }
-    .cover .small { font-size:10px; line-height:1.3; font-weight:bold; }
-    .cover .book-title { font-family:Georgia,serif; font-weight:bold; font-size:19px; line-height:1.2; }
-    .cover .seal { font-size:27px; color:#b52320; }
-    .cover.pink { background:#f7c8d7; } .cover.green { background:#73b83e; color:#fff; }
-    .cover.blue { background:#9dd9ec; } .cover.cream { background:#f3edc8; }
-    .cover.purple { background:#b8a4d6; } .cover.orange { background:#f6c76e; }
-    .book h2 { font-size:14px; text-align:center; line-height:1.35; min-height:38px; margin:10px 2px 7px; }
-    .read { margin-top:auto; display:block; text-align:center; background:#c51f2a; color:white; text-decoration:none; font-weight:bold; padding:9px 8px; border-radius:2px; }
-    .read:hover { background:#9f101a; }
-    .note { font-size:12px; color:#666; text-align:center; margin:10px 0 0; }
-    footer { text-align:center; padding:20px 12px; background:#fff; color:#666; font-size:13px; border-top:1px solid #ddd; }
-    @media(max-width:500px) { .hero { min-height:220px; } .shelf { padding:10px 7px 0; border-width:6px; } .books { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; } .cover { height:195px; } }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #292929;
+      background: #f6f3ed;
+    }
+
+    .hero {
+      padding: 36px 18px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(120deg, #9e1018, #ed2929, #a40f18);
+      border-bottom: 8px solid var(--gold);
+    }
+
+    .school {
+      font-size: clamp(13px, 2vw, 18px);
+      font-weight: bold;
+      line-height: 1.7;
+    }
+
+    h1 {
+      margin: 18px 0 8px;
+      font-size: clamp(28px, 4vw, 48px);
+    }
+
+    .subtitle {
+      color: #ffe477;
+      font-size: clamp(20px, 3vw, 34px);
+      font-weight: 800;
+    }
+
+    .intro {
+      max-width: 900px;
+      margin: auto;
+      padding: 25px 18px 12px;
+      text-align: center;
+    }
+
+    .intro h2 { color: #9e1018; }
+
+    .intro p {
+      line-height: 1.7;
+      color: #555;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 10px 16px 22px;
+    }
+
+    .navigation a {
+      padding: 11px 17px;
+      background: #b91620;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .navigation a:hover { background: #821019; }
+
+    .section {
+      max-width: 1500px;
+      margin: 10px auto 35px;
+      padding: 0 18px;
+      scroll-margin-top: 15px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 15px 18px;
+      color: white;
+      background: #b91620;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(18px, 2.5vw, 25px);
+    }
+
+    .shelf {
+      padding: 16px 12px 12px;
+      background: #211507;
+      border: 8px solid #a66a1d;
+      box-shadow: 0 5px 12px #0002;
+    }
+
+    .books {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .book {
+      min-width: 0;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border: 1px solid #c8b79d;
+      border-radius: 3px;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      color: #8d1515;
+      background: #f4e6b8;
+      border: 1px solid #d4c6b4;
+    }
+
+    .cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .placeholder {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      font-family: Georgia, serif;
+    }
+
+    .placeholder .small {
+      font: bold 10px/1.4 Arial, sans-serif;
+    }
+
+    .placeholder .title {
+      font-size: clamp(15px, 1.5vw, 21px);
+      font-weight: bold;
+      line-height: 1.3;
+    }
+
+    .placeholder .seal {
+      font-size: 28px;
+      color: #b52320;
+    }
+
+    .pink { background: #f7c8d7; }
+    .green { background: #73a947; color: white; }
+    .blue { background: #9dd9ec; }
+    .purple { background: #b8a4d6; }
+    .orange { background: #f6c76e; }
+    .cream { background: #f3edc8; }
+
+    .book h3 {
+      font-size: 15px;
+      text-align: center;
+      line-height: 1.45;
+      min-height: 44px;
+      margin: 11px 2px;
+    }
+
+    .read {
+      display: block;
+      margin-top: auto;
+      padding: 10px 5px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+      color: white;
+      background: #b91620;
+      border-radius: 3px;
+    }
+
+    .read:hover { background: #851019; }
+
+    .read.disabled {
+      background: #858585;
+      cursor: default;
+    }
+
+    .more {
+      display: block;
+      margin: 18px auto 2px;
+      padding: 11px 22px;
+      color: #fff;
+      background: #b91620;
+      border: 0;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .more:hover { background: #851019; }
+
+    .note {
+      max-width: 1000px;
+      margin: 0 auto 25px;
+      padding: 0 18px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #666;
+    }
+
+    footer {
+      padding: 22px 12px;
+      text-align: center;
+      color: #666;
+      background: white;
+      border-top: 1px solid #ddd;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1100px) {
+      .books { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 750px) {
+      .books { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .shelf { padding: 10px 7px; border-width: 6px; }
+    }
+
+    @media (max-width: 500px) {
+      .books { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .section { padding: 0 10px; }
+      .book { padding: 6px; }
+      .book h3 { font-size: 13px; }
+      .read { font-size: 12px; }
+    }
   </style>
 </head>
+
 <body>
   <header class="hero">
-    <div>
-      <div class="school">ỦY BAN NHÂN DÂN PHƯỜNG …<br>TRƯỜNG TIỂU HỌC LÊ HỒNG PHONG</div>
-      <h1>TỦ SÁCH ĐIỆN TỬ</h1>
-      <div class="subtitle">CHỦ TỊCH HỒ CHÍ MINH</div>
+    <div class="school">
+      ỦY BAN NHÂN DÂN PHƯỜNG …<br>
+      TRƯỜNG TIỂU HỌC LÊ HỒNG PHONG
     </div>
+    <h1>TỦ SÁCH ĐIỆN TỬ</h1>
+    <div class="subtitle">CHỦ TỊCH HỒ CHÍ MINH</div>
   </header>
 
   <section class="intro">
     <h2>Học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh</h2>
-    <p>Mời thầy cô và các em học sinh lựa chọn sách để tìm hiểu về cuộc đời, sự nghiệp, tư tưởng và tấm gương đạo đức của Chủ tịch Hồ Chí Minh.</p>
+    <p>
+      Mời thầy cô và các em học sinh lựa chọn sách để tìm hiểu về
+      cuộc đời, sự nghiệp, tư tưởng và tấm gương đạo đức của Chủ tịch Hồ Chí Minh.
+    </p>
   </section>
 
-  <main class="shelf-wrap">
-    <div class="shelf">
-      <div class="books">
-        <!-- Mỗi ô sách có thể thay bằng ảnh bìa thật và đường dẫn đọc sách. -->
-        <article class="book">
-          <div class="cover pink"><div class="small">TỦ SÁCH HỒ CHÍ MINH</div><div class="book-title">BÁC HỒ<br>CỦA CHÚNG EM</div><div class="seal">❀</div><div class="small">SÁCH THIẾU NHI</div></div>
-          <h2>Bác Hồ của chúng em</h2><a class="read" href="#" target="_blank" rel="noopener">Xem</a>
-        </article>
-        <article class="book">
-          <div class="cover cream"><div class="small">NHỮNG CÂU CHUYỆN VỀ BÁC</div><div class="book-title">BÁC HỒ<br>KÍNH YÊU</div><div class="seal">✿</div><div class="small">SÁCH THAM KHẢO</div></div>
-          <h2>Những câu chuyện về Bác</h2><a class="read" href="#" target="_blank" rel="noopener">Xem</a>
-        </article>
-        <article class="book">
-          <div class="cover purple"><div class="small">TÌM HIỂU LỊCH SỬ</div><div class="book-title">BÁC HỒ<br>VỚI THIẾU NHI</div><div class="seal">❀</div><div class="small">TỦ SÁCH NHÀ TRƯỜNG</div></div>
-          <h2>Bác Hồ với thiếu nhi</h2><a class="read" href="#" target="_blank" rel="noopener">Xem</a>
-        </article>
-        <article class="book">
-          <div class="cover green"><div class="small">TƯ LIỆU LỊCH SỬ</div><div class="book-title">BÁC HỒ<br>VỚI TUỔI TRẺ</div><div class="seal">✿</div><div class="small">SÁCH ĐIỆN TỬ</div></div>
-          <h2>Bác Hồ với tuổi trẻ</h2><a class="read" href="#" target="_blank" rel="noopener">Xem</a>
-        </article>
-        <article class="book">
-          <div class="cover blue"><div class="small">HỌC TẬP THEO GƯƠNG BÁC</div><div class="book-title">5 ĐIỀU<br>BÁC HỒ DẠY</div><div class="seal">❀</div><div class="small">DÀNH CHO HỌC SINH</div></div>
-          <h2>5 điều Bác Hồ dạy</h2><a class="read" href="#" target="_blank" rel="noopener">Xem</a>
-        </article>
-        <article class="book">
-          <div class="cover orange"><div class="small">TÁC PHẨM TIÊU BIỂU</div><div class="book-title">DI CHÚC<br>CHỦ TỊCH HỒ CHÍ MINH</div><div class="seal">✿</div><div class="small">TƯ LIỆU ĐỌC</div></div>
-          <h2>Di chúc Chủ tịch Hồ Chí Minh</h2><a class="read" href="#" target="_blank" rel="noopener">Xem</a>
-        </article>
-        <article class="book">
-          <div class="cover cream"><div class="small">TẤM GƯƠNG ĐẠO ĐỨC</div><div class="book-title">CÂU CHUYỆN<br>VỀ LỐI SỐNG</div><div class="seal">❀</div><div class="small">SÁCH GIÁO DỤC</div></div>
-          <h2>Câu chuyện về đạo đức của Bác</h2><a class="read" href="#" target="_blank" rel="noopener">Xem</a>
-        </article>
-        <article class="book">
-          <div class="cover pink"><div class="small">BÁC HỒ VÀ QUÊ HƯƠNG</div><div class="book-title">TỪ LÀNG SEN<br>ĐẾN BA ĐÌNH</div><div class="seal">✿</div><div class="small">TƯ LIỆU LỊCH SỬ</div></div>
-          <h2>Cuộc đời và sự nghiệp của Bác</h2><a class="read" href="#" target="_blank" rel="noopener">Xem</a>
-        </article>
-        <article class="book">
-          <div class="cover green"><div class="small">GÓC ĐỌC SÁCH</div><div class="book-title">THƠ<br>HỒ CHÍ MINH</div><div class="seal">❀</div><div class="small">TÁC PHẨM VĂN HỌC</div></div>
-          <h2>Thơ Hồ Chí Minh</h2><a class="read" href="#" target="_blank" rel="noopener">Xem</a>
-        </article>
+  <nav class="navigation">
+    <a href="#sach-cua-bac">Sách của Hồ Chí Minh</a>
+    <a href="#sach-ve-bac">Sách về Hồ Chí Minh</a>
+  </nav>
+
+  <main>
+    <section class="section" id="sach-cua-bac">
+      <div class="section-heading">
+        <h2>SÁCH CỦA HỒ CHÍ MINH</h2>
       </div>
-    </div>
-    <p class="note">Lưu ý: Các bìa trong mẫu là bìa minh họa. Cần thay bằng bìa sách thật và cập nhật đường dẫn đọc sách trước khi công bố.</p>
+      <div class="shelf">
+        <div class="books" id="books-author"></div>
+        <button class="more" id="more-author" type="button" hidden>
+          Xem tất cả
+        </button>
+      </div>
+    </section>
+
+    <section class="section" id="sach-ve-bac">
+      <div class="section-heading">
+        <h2>SÁCH VỀ HỒ CHÍ MINH</h2>
+      </div>
+      <div class="shelf">
+        <div class="books" id="books-about"></div>
+        <button class="more" id="more-about" type="button" hidden>
+          Xem tất cả
+        </button>
+      </div>
+    </section>
   </main>
 
-  <footer>Thư viện điện tử — Trường Tiểu học Lê Hồng Phong</footer>
+  <p class="note">
+    Những bìa chưa có ảnh thật hiện chỉ là hình minh họa.
+    Chỉ sử dụng sách và tài liệu có nguồn hợp pháp, phù hợp với học sinh.
+  </p>
+
+  <footer>
+    TỦ SÁCH ĐIỆN TỬ — TRƯỜNG TIỂU HỌC LÊ HỒNG PHONG
+  </footer>
+
+  <script>
+    /*
+      CÁCH THÊM SÁCH:
+      - category: "author" nếu là tác phẩm của Bác.
+      - category: "about" nếu là sách viết về Bác.
+      - cover: đường dẫn ảnh trong thư mục covers.
+      - pdf: đường dẫn sách trong thư mục pdf.
+      - Nếu chưa có ảnh hoặc PDF, để chuỗi rỗng "".
+    */
+
+    const books = [
+      {
+        title: "Di chúc Chủ tịch Hồ Chí Minh",
+        category: "author",
+        cover: "",
+        pdf: "",
+        color: "orange",
+        coverTitle: "DI CHÚC"
+      },
+      {
+        title: "Thơ Hồ Chí Minh",
+        category: "author",
+        cover: "",
+        pdf: "",
+        color: "green",
+        coverTitle: "THƠ HỒ CHÍ MINH"
+      },
+      {
+        title: "Bác Hồ của chúng em",
+        category: "about",
+        cover: "",
+        pdf: "",
+        color: "pink",
+        coverTitle: "BÁC HỒ CỦA CHÚNG EM"
+      },
+      {
+        title: "Những câu chuyện về Bác",
+        category: "about",
+        cover: "",
+        pdf: "",
+        color: "cream",
+        coverTitle: "BÁC HỒ KÍNH YÊU"
+      },
+      {
+        title: "Bác Hồ với thiếu nhi",
+        category: "about",
+        cover: "",
+        pdf: "",
+        color: "purple",
+        coverTitle: "BÁC HỒ VỚI THIẾU NHI"
+      },
+      {
+        title: "Bác Hồ với tuổi trẻ",
+        category: "about",
+        cover: "",
+        pdf: "",
+        color: "green",
+        coverTitle: "BÁC HỒ VỚI TUỔI TRẺ"
+      },
+      {
+        title: "5 điều Bác Hồ dạy",
+        category: "about",
+        cover: "",
+        pdf: "",
+        color: "blue",
+        coverTitle: "5 ĐIỀU BÁC HỒ DẠY"
+      },
+      {
+        title: "Câu chuyện về đạo đức của Bác",
+        category: "about",
+        cover: "",
+        pdf: "",
+        color: "cream",
+        coverTitle: "TẤM GƯƠNG ĐẠO ĐỨC"
+      },
+      {
+        title: "Cuộc đời và sự nghiệp của Bác",
+        category: "about",
+        cover: "",
+        pdf: "",
+        color: "pink",
+        coverTitle: "CUỘC ĐỜI CỦA BÁC"
+      }
+    ];
+
+    function createBook(book) {
+      const article = document.createElement("article");
+      article.className = "book";
+
+      const cover = document.createElement("div");
+      cover.className = "cover";
+
+      if (book.cover) {
+        const img = document.createElement("img");
+        img.src = book.cover;
+        img.alt = "Bìa sách " + book.title;
+
+        img.onerror = function () {
+          cover.innerHTML = "";
+          cover.appendChild(createPlaceholder(book));
+        };
+
+        cover.appendChild(img);
+      } else {
+        cover.appendChild(createPlaceholder(book));
+      }
+
+      const title = document.createElement("h3");
+      title.textContent = book.title;
+
+      let link;
+      if (book.pdf) {
+        link = document.createElement("a");
+        link.className = "read";
+        link.href = book.pdf;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = "Đọc sách";
+        link.setAttribute("aria-label", "Đọc sách " + book.title);
+      } else {
+        link = document.createElement("span");
+        link.className = "read disabled";
+        link.textContent = "Chưa cập nhật PDF";
+        link.title = "Hãy tải PDF lên GitHub rồi cập nhật đường dẫn trong danh sách sách.";
+      }
+
+      article.append(cover, title, link);
+      return article;
+    }
+
+    function createPlaceholder(book) {
+      const placeholder = document.createElement("div");
+      placeholder.className = "placeholder " + (book.color || "cream");
+
+      const top = document.createElement("div");
+      top.className = "small";
+      top.textContent = "TỦ SÁCH HỒ CHÍ MINH";
+
+      const title = document.createElement("div");
+      title.className = "title";
+      title.textContent = book.coverTitle || book.title;
+
+      const seal = document.createElement("div");
+      seal.className = "seal";
+      seal.textContent = "✿";
+
+      const bottom = document.createElement("div");
+      bottom.className = "small";
+      bottom.textContent = "TRƯỜNG TIỂU HỌC LÊ HỒNG PHONG";
+
+      placeholder.append(top, title, seal, bottom);
+      return placeholder;
+    }
+
+    function setupSection(category, containerId, buttonId) {
+      const container = document.getElementById(containerId);
+      const button = document.getElementById(buttonId);
+      const sectionBooks = books.filter(book => book.category === category);
+      const initialCount = 4;
+      let expanded = false;
+
+      function render() {
+        container.replaceChildren();
+
+        const visibleBooks = expanded
+          ? sectionBooks
+          : sectionBooks.slice(0, initialCount);
+
+        visibleBooks.forEach(book => {
+          container.appendChild(createBook(book));
+        });
+
+        button.hidden = sectionBooks.length <= initialCount;
+        button.textContent = expanded ? "Thu gọn" : "Xem tất cả";
+      }
+
+      button.addEventListener("click", function () {
+        expanded = !expanded;
+        render();
+      });
+
+      render();
+    }
+
+    setupSection("author", "books-author", "more-author");
+    setupSection("about", "books-about", "more-about");
+  </script>
 </body>
 </html>
